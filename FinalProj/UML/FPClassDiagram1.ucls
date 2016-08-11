@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="com.fjcx.e76.finalproj.DatabaseHandler" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/DatabaseHandler.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="637" width="311" x="2359" y="732"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.fjcx.e76.finalproj.MainActivity" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/MainActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="241" width="210" x="2109" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.fjcx.e76.finalproj.model.PantryItem" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/model/PantryItem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="655" width="354" x="41" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.fjcx.e76.finalproj.pantry.UpdatePantryItemActivity" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/pantry/UpdatePantryItemActivity.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="439" width="210" x="1609" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.fjcx.e76.finalproj.pantry.AddPantryItemActivity" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/pantry/AddPantryItemActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="169" width="210" x="2359" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.fjcx.e76.finalproj.pantry.PantryListAdapter" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/pantry/PantryListAdapter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="169" width="327" x="4497" y="732"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.fjcx.e76.finalproj.pantry.UpdatePantryItemActivity.SelectDateFragment" 
+    project="FinalProj" file="/FinalProj/src/com/fjcx/e76/finalproj/pantry/UpdatePantryItemActivity.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="115" width="200" x="1609" y="732"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.fjcx.e76.finalproj.pantry.PantryActivity" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/pantry/PantryActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="241" width="339" x="2609" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.fjcx.e76.finalproj.recipe.RecipeResultActivity.FindRecipeTask" 
+    project="FinalProj" file="/FinalProj/src/com/fjcx/e76/finalproj/recipe/RecipeResultActivity.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="115" width="177" x="2784" y="732"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.fjcx.e76.finalproj.recipe.SingleRecipeActivity" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/recipe/SingleRecipeActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="223" width="265" x="1007" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="com.fjcx.e76.finalproj.recipe.RecipeItem" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/recipe/RecipeItem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="367" width="348" x="3001" y="732"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="com.fjcx.e76.finalproj.recipe.SingleRecipeActivity.FindSingleRecipeTask" 
+    project="FinalProj" file="/FinalProj/src/com/fjcx/e76/finalproj/recipe/SingleRecipeActivity.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="115" width="177" x="1041" y="732"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="com.fjcx.e76.finalproj.recipe.SingleRecipeItem" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/recipe/SingleRecipeItem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="565" width="228" x="773" y="732"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="com.fjcx.e76.finalproj.recipe.FindRecipesActivity" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/recipe/FindRecipesActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="169" width="210" x="757" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="com.fjcx.e76.finalproj.recipe.RecipeResultActivity" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/recipe/RecipeResultActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="295" width="261" x="3367" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="com.fjcx.e76.finalproj.recipe.RecipeListAdapter" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/recipe/RecipeListAdapter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="169" width="257" x="1312" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="com.fjcx.e76.finalproj.shoplist.ShoppingListAdapter" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/shoplist/ShoppingListAdapter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="151" width="341" x="3565" y="732"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="com.fjcx.e76.finalproj.shoplist.AddSListItemActivity" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/shoplist/AddSListItemActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="187" width="210" x="1859" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="com.fjcx.e76.finalproj.shoplist.ShoppingListActivity" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/shoplist/ShoppingListActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="241" width="339" x="2988" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="com.fjcx.e76.finalproj.shopsnear.ShopsJSONParser" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/shopsnear/ShopsJSONParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="133" width="282" x="435" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="com.fjcx.e76.finalproj.shopsnear.ShopsNearActivity.ParserTask" 
+    project="FinalProj" file="/FinalProj/src/com/fjcx/e76/finalproj/shopsnear/ShopsNearActivity.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="133" width="294" x="3946" y="732"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="com.fjcx.e76.finalproj.shopsnear.ShopsNearActivity.PlacesTask" 
+    project="FinalProj" file="/FinalProj/src/com/fjcx/e76/finalproj/shopsnear/ShopsNearActivity.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="133" width="177" x="4280" y="732"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="com.fjcx.e76.finalproj.shopsnear.ShopsNearActivity" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/shopsnear/ShopsNearActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="421" width="339" x="3946" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="com.fjcx.e76.finalproj.util.RestClient" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/util/RestClient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="331" width="238" x="3668" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="com.fjcx.e76.finalproj.util.ImageThreadLoader.QueueItem" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/util/ImageThreadLoader.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="97" width="114" x="1123" y="1409"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="com.fjcx.e76.finalproj.util.SectionedAdapter.Section" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/util/SectionedAdapter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="115" width="138" x="4864" y="732"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="com.fjcx.e76.finalproj.util.SectionedAdapter" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/util/SectionedAdapter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="295" width="257" x="4497" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="28" language="java" name="com.fjcx.e76.finalproj.util.RestClient.RequestMethod" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/util/RestClient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="115" width="136" x="3389" y="732"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="29" language="java" name="com.fjcx.e76.finalproj.util.ImageThreadLoader.QueueRunner" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/util/ImageThreadLoader.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="97" width="114" x="1298" y="1409"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="30" language="java" name="com.fjcx.e76.finalproj.util.ImageThreadLoader.ImageLoadedListener" 
+    project="FinalProj" file="/FinalProj/src/com/fjcx/e76/finalproj/util/ImageThreadLoader.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="79" width="154" x="1258" y="1546"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class id="31" language="java" name="com.fjcx.e76.finalproj.util.ImageThreadLoader" project="FinalProj" 
+    file="/FinalProj/src/com/fjcx/e76/finalproj/util/ImageThreadLoader.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="187" width="266" x="1258" y="732"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <association id="32">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="33" name="dbHandler"/>      
+      <multiplicity id="34" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="35">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="36" name="dbHandler"/>      
+      <multiplicity id="37" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="38">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="39" name="imageLoader"/>      
+      <multiplicity id="40" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="41">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="22"/>  
+  </nesting>  
+  <nesting id="42">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="12"/>  
+  </nesting>  
+  <association id="43">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="44" name="dbHandler"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="46">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </nesting>  
+  <nesting id="47">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="26"/>  
+  </nesting>  
+  <nesting id="48">    
+    <bendpoint x="1267" y="1409"/>    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="30"/>  
+  </nesting>  
+  <association id="49">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="50" name="dbHandler"/>      
+      <multiplicity id="51" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="52">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="53" name="dbHandler"/>      
+      <multiplicity id="54" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="55">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="56">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="57" name="runner"/>      
+      <multiplicity id="58" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="59">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="60" name="recipelist"/>      
+      <multiplicity id="61" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="62">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="63" name="listener"/>      
+      <multiplicity id="64" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="65">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="66" name="sladapter"/>      
+      <multiplicity id="67" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="68">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="69" name="sections"/>      
+      <multiplicity id="70" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="71">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="9"/>  
+  </nesting>  
+  <nesting id="72">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="25"/>  
+  </nesting>  
+  <association id="73">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="74" name="dbHandler"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="76">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="77" name="Queue"/>      
+      <multiplicity id="78" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="79">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="80" name="recipeItem"/>      
+      <multiplicity id="81" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="82">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <nesting id="83">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="21"/>  
+  </nesting>  
+  <nesting id="84">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="28"/>  
+  </nesting>  
+  <association id="85">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="86" name="imageLoader"/>      
+      <multiplicity id="87" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="88">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="29"/>  
+  </nesting>  
+  <association id="89">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="90" name="dbHandler"/>      
+      <multiplicity id="91" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

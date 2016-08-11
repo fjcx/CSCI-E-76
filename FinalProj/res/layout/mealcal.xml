@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+    
+    
+
+    <Button
+        android:id="@+id/calendar_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/calendar_btn_str" />
+    
+    <LinearLayout android:id="@+id/calendar_actionbar"
+        android:background="@color/actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <Button android:id="@+id/calendar_add_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Add Item"/>
+        <Button android:id="@+id/calendar_remove_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Remove"/>
+        <ImageButton android:id="@+id/calendar_menu_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:contentDescription="Menu"
+	        android:src="@drawable/homebtn1"/>
+    </LinearLayout>
+
+</RelativeLayout>

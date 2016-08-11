@@ -1,0 +1,212 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML5 Browser detection via Javascript</title>
+<meta name="viewport" content="width=device-width, user-scable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body onLoad="init();">
+	
+<script>
+var context;
+var x=100;
+var y=200;
+var newx;
+var newy;
+var scrwidth = 350;
+var scrheight = 400;
+var dx=5;
+var dy=5;
+var balldiam=20;
+var lastImX = 0;
+var lastImY = 0;
+var obstacles=new Array(new obstacle('brown', 50, 90, 30, 40),
+						new obstacle('red', 90, 30, 40, 70),
+						new obstacle('blue', 150, 160, 50, 30));
+
+var obst1;
+
+function init()
+{
+	window.addEventListener('devicemotion', motionHandler, true);
+	initdraw();
+}
+
+function initdraw() {
+	mainCanvas.width=scrwidth;
+	mainCanvas.height=scrheight;
+	context= mainCanvas.getContext('2d');
+	//Should perhaps init obstacles here
+	for(var i=0; i<obstacles.length; i++){
+		drawObstacle(obstacles[i]);
+	}
+
+	animate();
+}
+
+// updating acceleration from motionHandler
+function motionHandler(e) {
+	if (!e.accelerationIncludingGravity){ return false };
+	var acc = e.accelerationIncludingGravity;
+	dx = -(2*acc.x);
+	dy = (2*acc.y);
+}
+
+// requestAnimationFrame code
+(function() {
+    var lastTime = 0;
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+                                   || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+ 
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+              timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+ 
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+}());
+
+var fps = 48;
+function animate() {
+    setTimeout(function() {
+        requestAnimationFrame(animate);
+		movementCalc();
+		draw();
+	}, 1000 / fps);
+}
+
+function draw() { 
+	// Only clear position of last drawn image
+	context.clearRect(lastImX-1, lastImY-1, balldiam+2, balldiam+2);
+	context.save();
+	lastImX = x;
+	lastImY = y;
+    context.translate(x, y);
+	
+    context.drawImage(ball, 0, 0, balldiam, balldiam);
+    context.restore();
+}
+
+function movementCalc() {
+     	newx = x + dx;
+		newy = y + dy;
+
+		var moveX = false;
+		var moveY = false;
+
+	  	// Boundary Logic - start
+		if( newx < 0 || newx > (scrwidth-balldiam)){
+			if(newx < x){
+				if(newx > (scrwidth-balldiam)){
+					moveX=true;
+				}
+			}else if(newx > x){
+				if(newx < 0){
+					moveX=true;
+				}	
+			}
+		}else{
+			moveX=true;
+		}
+
+		if( newy < 0 || newy>(scrheight-balldiam)){
+			if((newy > (scrheight-balldiam) && (newy < y))||((newy < balldiam) && (newy > y))){
+				moveY=true;
+			}
+		}else{
+			moveY=true;
+		}
+		// Boundary Logic - end
+	
+		// Obstacle Logic - start
+		for(var i=0; i<obstacles.length; i++){
+			if(obstacles[i].isHitX()){
+				moveX=false;
+			}
+
+			if(obstacles[i].isHitY()){
+				moveY=false;
+			}
+		}
+		// Obstacle Logic - end
+
+		if(moveX){
+			x=newx;
+		}
+		if(moveY){
+			y=newy;
+		}	
+}
+
+function obstacle(obsType, obsX, obsY, obsWidth, obsHeight) {
+	this.obsType = obsType;
+	this.obsX = obsX;
+	this.obsY = obsY;
+	this.obsHeight = obsHeight;
+	this.obsWidth = obsWidth;
+}
+
+obstacle.prototype.isHit = function() {
+	// quick check, and return Boolean (true/false)
+	if((newx>(this.obsX-balldiam))&&(newx<(this.obsX+this.obsWidth+balldiam))&&(newy>(this.obsY-balldiam))&&(newy<(this.obsY+this.obsHeight+balldiam)) ){
+		this.obsType = 'red';
+		return true;
+	}else {
+		this.obsType = 'brown';
+		return false;
+	}
+}
+
+obstacle.prototype.isHitX = function() {
+	// quick check, and return Boolean (true/false)
+	if((newx > (this.obsX-balldiam)) && (newx < (this.obsX+this.obsWidth))){
+		if((y>(this.obsY-balldiam))&&(y<(this.obsY+this.obsHeight))){
+			this.obsType = 'red';
+			return true;
+		}
+	}else {
+		this.obsType = 'brown';
+		return false;
+	}
+}
+
+obstacle.prototype.isHitY = function() {
+	// quick check, and return Boolean (true/false)
+	if((newy>(this.obsY-balldiam))&&(newy<(this.obsY+this.obsHeight))){
+		if((x > (this.obsX-balldiam)) && (x < (this.obsX+this.obsWidth))){
+			this.obsType = 'red';
+			return true;
+		}
+	}else {
+		this.obsType = 'brown';
+		return false;
+	}
+}
+
+function drawObstacle(obstacle) {
+	context.beginPath();
+	context.rect(obstacle.obsX, obstacle.obsY, obstacle.obsWidth, obstacle.obsHeight);
+	context.fillStyle = obstacle.obsType;
+	context.fill();
+	context.lineWidth = 0;
+	context.strokeStyle = obstacle.obsType;
+	context.stroke();
+}
+
+</script>
+	<img id="ball" src="ball.png" style="display:none" />
+	<canvas id="mainCanvas"></canvas>
+</body>

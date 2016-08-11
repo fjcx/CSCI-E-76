@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+
+<body>
+
+
+<span id="alpha">0.00</span><br/>
+<span id="beta">0.00</span><br/>
+<span id="gamma">0.00</span>
+<br/>
+<span id="message"></span>
+<script>
+   if (! window.DeviceMotionEvent)
+	{
+		alert("This demo is only supported on mobile browsers");
+		throw ("Get a Mobile Browser");
+	}
+  // Otherwise, we are here
+
+
+  function motionHandler (e)
+  {
+	if (!e.accelerationIncludingGravity) return false;
+	a = e.accelerationIncludingGravity;
+
+	document.getElementById('alpha').innerHTML = a.x;
+
+	document.getElementById('beta').innerHTML = a.y;
+	document.getElementById('gamma').innerHTML = a.z;
+
+document.getElementById('message').innerHTML='x';
+  }
+  window.addEventListener ("devicemotion", motionHandler, false);
+
+</script>
+</body>
+</html>

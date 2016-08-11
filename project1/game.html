@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ball Danger</title>
+<link rel="apple-touch-icon" href="img/star.png"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width, user-scable=no, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="mainstyle.css">
+</head>
+<body onLoad="init();">
+	
+<script>
+var context;
+var startingX=5;
+var startingY=5;
+var x=startingX;
+var y=startingY;
+var newx;
+var newy;
+var scrwidth = 300;
+var scrheight = 300;
+var dx=0;
+var dy=0;
+var paused = false;
+var balldiam=20;
+var lastImX = startingX+1;
+var lastImY = startingY+1;
+var lvlScore = 0;
+var lives = 3;
+var slowMove = 0;
+// audio elements
+var btnSnd;
+var fireSnd;
+var cashSnd;
+var crowdSnd;
+// localStorage and settings
+var localSortageSupported = false;
+var viewOrient = "portrait"; // default to locked portrait viewport ( because my moto phone only locks in portrait :) )
+var revXaxis = "false"; // allow option to reverse x-axis if desired (settings menu)
+var revYaxis = "false"; // allow option to reverse y-axis if desired (settings menu)
+
+var obstacles=new Array(new obstacle('wood', 0, 0, 5, scrheight),
+						new obstacle('wood', 0, 0, scrwidth, 5),
+						new obstacle('wood', 0, scrheight-5, scrwidth, 5),
+						new obstacle('wood', scrwidth-5, 0, 5, scrheight),
+						new obstacle('wood', 0, 40, 120, 5),
+						new obstacle('wood', 120 + (balldiam*2), 40, scrwidth-25, 5),
+						new obstacle('wood', 120 + (balldiam*2), 40, scrwidth-25, 5),
+						new obstacle('wood', 70, 260, 120, 10),
+						new obstacle('fire', 120 - 35, 60, 30, 30),
+						new obstacle('fire', 120 + (balldiam*2), 60, 30, 30),
+						new obstacle('fire', 90, 270, 30, 30),
+						new obstacle('fire', 90, scrheight-35, 30, 30),
+						new obstacle('gold', 40, 80, 25, 25),
+						new obstacle('gold', 90, 180, 25, 25),
+						new obstacle('success', scrwidth-balldiam-10, scrheight-balldiam-10, 20, 20));
+
+
+// initialise the application settings
+function init()
+{
+	// configure settings based on localStorage/settings menu (if they have been set)
+	localSortageSupported = isLocalStorageSupported();
+	if(localSortageSupported){
+		viewOrient = queryLocalStorage("viewOrient",viewOrient);
+		revXaxis = queryLocalStorage("revXaxis",revXaxis);
+		revYaxis = queryLocalStorage("revYaxis",revYaxis);
+	}
+
+	if(viewOrient=="landscape"){
+		var	menuEl = document.getElementById("transientMenu");
+		var rightMenu = document.getElementById("rightMenu");
+		rightMenu.appendChild(menuEl);
+	}
+
+	window.addEventListener('devicemotion', motionHandler, true);
+	document.getElementById('pauseBtn').addEventListener('touchstart', pauseGame, false);
+	document.getElementById('menuBtn').addEventListener('touchstart', mainMenu, false);
+	document.getElementById('currScore').innerHTML=""+lvlScore;
+	document.getElementById('currLives').innerHTML=""+lives;
+	// public domain sounds provided by soundbible and creative commons license ...
+	btnSnd = new Audio("audio/click1.mp3");
+	fireSnd = new Audio("audio/fire1.mp3");
+	cashSnd = new Audio("audio/cash1.mp3");
+	crowdSnd = new Audio("audio/crowd1.mp3"); 
+
+	initdraw();
+}
+
+// initialise the canvas and drawing elements
+function initdraw() {
+	mainCanvas.width=scrwidth;
+	mainCanvas.height=scrheight;
+	context= mainCanvas.getContext('2d');
+	//Should perhaps init obstacles here
+	for(var i=0; i<obstacles.length; i++){
+		drawObstacle(obstacles[i]);
+	}
+	animate();
+}
+
+// see if browser supports localStorage
+function isLocalStorageSupported() {
+	try {
+		var supported = false;
+		if (window['localStorage'] !== null){
+			supported = true;
+		}
+		return supported;
+	} catch(e) {
+		return false;
+	}
+}
+
+
+// reads setting from 'settings' menu if they exist in localStorage
+function queryLocalStorage(qryStr,value) {
+	if(localSortageSupported){
+		var storVal = localStorage.getItem(qryStr);
+		// value is undefined if not in localStorage
+		if((typeof(storVal) !== "undefined")&&(storVal!=null)){
+			// return val from localStorage					
+			return storVal;
+		}
+	}
+	// local storage does not contain the value, so return it's current settings
+	return value;
+} 
+
+// set value in local storage
+function setLocalStorage(qryStr,value) {
+	if(localSortageSupported){
+		try {
+			localStorage.setItem(qryStr, value);
+		} catch (e) {
+			if (e == QUOTA_EXCEEDED_ERR) {
+				alert('Mem limit: Could not save settings!');
+			}else{
+				alert('Error: Could not save settings!');
+			}
+		}
+	}else{
+		alert('LocalStorage not supported!');
+	}	
+} 
+
+// updating acceleration from motionHandler
+function motionHandler(e) {
+	if (!e.accelerationIncludingGravity){ return false };
+	var acc = e.accelerationIncludingGravity;
+	dx = -(2*acc.x);
+	dy = (2*acc.y);
+}
+
+// pause button handler
+function pauseGame(e){
+	btnSnd.play();
+    paused = !paused;
+}
+
+// menu button handler
+function mainMenu(e){
+	btnSnd.play();
+    window.location = "../main.html";
+}
+
+// requestAnimationFrame code
+(function() {
+    var lastTime = 0;
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+                                   || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+ 
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+              timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+ 
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+}());
+
+var fps = 48;
+function animate() {
+    setTimeout(function() {
+        requestAnimationFrame(animate);
+		movementCalc();
+		draw();
+	}, 1000 / fps);
+}
+
+function draw() { 
+	// Only clear position of last drawn image
+	context.clearRect(lastImX-1, lastImY-1, balldiam+2, balldiam+2);
+	context.save();
+	lastImX = x;
+	lastImY = y;
+    context.translate(x, y);
+    context.drawImage(ball, 0, 0, balldiam, balldiam);
+    context.restore();
+}
+
+function movementCalc() {
+	if(!paused){
+		var relativeDx;
+		var relativeDy;
+
+		// check for altered x-axis
+		if(revXaxis == "true"){
+			relativeDx = -dx;
+		}else{
+			// default x-axis
+			relativeDx = dx;
+		}
+
+		// check for altered y-axis
+		if(revYaxis == "true"){
+			relativeDy = -dy;
+		}else{
+			// default y-axis
+			relativeDy = dy;
+		}
+
+		// check for landscape setting (swaps x-axis and y-axis)
+		if(viewOrient == "landscape"){
+			var tmpDx = relativeDx;
+			relativeDx = relativeDy;
+			// reverse y axis also
+			relativeDy = -tmpDx;
+		}
+
+		// check if slow move is enabled
+		if(slowMove>0){
+			newx = x + (relativeDx/5);
+			newy = y + (relativeDy/5);
+			slowMove = slowMove - 1;
+		}else{
+     		newx = x + relativeDx;
+			newy = y + relativeDy;
+		}
+
+		var moveX = true;
+		var moveY = true;
+
+		// Decided to always use wood Obstacles to define the boundaries of the canvas to simplify the movement 
+		// calculations and to improve performance over dedicated boudary logic (we are checking obstacles anyway)
+		// Obstacle Logic - start
+		for(var i=0; i<obstacles.length; i++){
+			if(!obstacles[i].ignore){
+				if(obstacles[i].isHitX()){
+					if(obstacles[i].obsType == 'success'){					
+						winLevel();
+					}else if(obstacles[i].obsType == 'fire'){
+						ballDeath();
+					}else if(obstacles[i].obsType == 'gold'){
+						if(!obstacles[i].ignore){
+							collectGold();
+							removeObs(obstacles[i]);
+						}
+						// after picking up the gold we ignore this obstacle in future
+						obstacles[i].ignore = true;
+						moveX=false;
+					}else{
+						// in the case of wood we stop the movement and
+						// redraw only that obstacle to prevent clearRect from eroding it
+						drawObstacle(obstacles[i]);
+						moveX=false;
+					}
+				}
+
+				if(obstacles[i].isHitY()){
+					if(obstacles[i].obsType == 'success'){
+						winLevel();
+					}else if(obstacles[i].obsType == 'fire'){
+						ballDeath();
+					}else if(obstacles[i].obsType == 'gold'){
+						if(!obstacles[i].ignore){
+							collectGold();
+							removeObs(obstacles[i]);
+						}
+						// after picking up the gold we ignore this obstacle in future
+						obstacles[i].ignore = true;
+						moveY=false;
+					}else{
+						// in the case of wood we stop the movement and
+						// redraw only that obstacle to prevent clearRect from eroding it
+						drawObstacle(obstacles[i]); // ??? remove
+						moveY=false;
+					}
+				}
+			}
+		}
+		// Obstacle Logic - end
+
+		if(moveX){
+			x=newx;
+		}
+		if(moveY){
+			y=newy;
+		}
+	}
+}
+
+function winLevel() {
+	alert("Great Success!!!");
+	crowdSnd.pause();
+	crowdSnd.currentTime = 0;
+	crowdSnd.play();
+	lvlScore+=50;	// wingame
+	document.getElementById('currScore').innerHTML=""+lvlScore;
+	resetLevel();
+}
+
+function collectGold() {
+	slowMove=30;	// we slow the movement when picking up gold
+	cashSnd.pause();
+	cashSnd.currentTime = 0;
+	cashSnd.play();
+	lvlScore+=20;	// collected star/gold adds to score !!
+	document.getElementById('currScore').innerHTML=""+lvlScore;
+}
+
+function ballDeath() {
+	if(lives>1){
+		playFireSnd();
+		alert("Serious Ball Death issues1!!!");
+		lives = lives - 1;
+		document.getElementById('currLives').innerHTML=""+lives;
+		resetLevel();
+	}else{
+		playFireSnd();
+		alert("total Fail -  your family are dissappointed in you!!!");
+		lvlScore=0;	// endgame
+		lives=3;
+		document.getElementById('currScore').innerHTML=""+lvlScore;
+		document.getElementById('currLives').innerHTML=""+lives;
+		resetLevel();
+	}
+}
+
+function playFireSnd(){
+	fireSnd.pause();
+	fireSnd.currentTime = 0;
+	fireSnd.play();
+}
+
+function resetLevel() {
+	x=startingX;
+	y=startingY;
+	initDraw();	// perhaps don't need to call this here ???
+}
+
+function obstacle(obsType, obsX, obsY, obsWidth, obsHeight) {
+	this.obsType = obsType;
+	this.obsX = obsX;
+	this.obsY = obsY;
+	this.obsHeight = obsHeight;
+	this.obsWidth = obsWidth;
+	this.ignore = false;
+}
+
+obstacle.prototype.isHit = function() {
+	// quick check, and return Boolean (true/false)
+	if((newx>(this.obsX-balldiam))&&(newx<(this.obsX+this.obsWidth+balldiam))&&(newy>(this.obsY-balldiam))&&(newy<(this.obsY+this.obsHeight+balldiam)) ){
+		return true;
+	}else {
+		return false;
+	}
+}
+
+obstacle.prototype.isHitX = function() {
+	// quick check, and return Boolean (true/false)
+	if((newx > (this.obsX-balldiam)) && (newx < (this.obsX+this.obsWidth))){
+		if((y>(this.obsY-balldiam))&&(y<(this.obsY+this.obsHeight))){
+			return true;
+		}
+	}else {
+		return false;
+	}
+}
+
+obstacle.prototype.isHitY = function() {
+	// quick check, and return Boolean (true/false)
+	if((newy>(this.obsY-balldiam))&&(newy<(this.obsY+this.obsHeight))){
+		if((x > (this.obsX-balldiam)) && (x < (this.obsX+this.obsWidth))){
+			return true;
+		}
+	}else {
+		return false;
+	}
+}
+
+function drawObstacle(obstacle) {
+	
+	var obsColor = "brown";
+	var drawImg = true;
+	var drawObs = true;
+	switch(obstacle.obsType) {
+		case "fire":
+			obsColor="#A9A9A9";
+		 	break;
+		case "gold":
+		  	obsColor="gold"
+			drawObs = false;
+		  	break;
+		case "success":
+		  	obsColor="green"
+			drawObs = false;
+		  	break;
+		default:
+		  	obsColorL="brown"
+			drawImg = false;
+		  	break;
+	}
+	
+	// we may not want to draw obs bounding box, (just the image)
+	if(drawObs){
+		context.beginPath();
+		context.rect(obstacle.obsX, obstacle.obsY, obstacle.obsWidth, obstacle.obsHeight);
+		context.fillStyle = obsColor;
+		context.fill();
+		context.lineWidth = 0;
+		context.strokeStyle = obsColor;
+		context.stroke();
+	}
+
+	// we may want to draw the image of the obstacle, and also the bounding box
+	if( drawImg){
+		drawObstacleImg(obstacle);
+	}
+	//context.clearRect(lastImX-1, lastImY-1, balldiam+2, balldiam+2);
+}
+
+function drawObstacleImg(obstacle) {
+	context.save();
+    context.translate(obstacle.obsX, obstacle.obsY);
+	var obsImgType = document.getElementById(obstacle.obsType);
+    context.drawImage(obsImgType, 0, 0, obstacle.obsWidth, obstacle.obsHeight);
+    context.restore();
+}
+
+function removeObs(obstacle) {
+	context.save();
+    context.translate(0, 0);
+	context.clearRect(obstacle.obsX, obstacle.obsY, obstacle.obsWidth, obstacle.obsHeight);
+	context.restore();
+}
+
+</script>
+	<table style="padding:0px;margin:0px;">
+		<tr>
+			<td><canvas id="mainCanvas"></canvas></td>
+			<td id="rightMenu">
+			</td>
+		<tr>
+		<tr>
+			<td id="lowerMenu"><div id="transientMenu"><div> Score: <span id="currScore"></span>; Lives: <span id="currLives"></span></div><button type="button" id='pauseBtn'>Pause</button><button type="button" id='menuBtn'>Quit</button></div></td>
+		<tr>
+		
+	</table>
+		<img id="ball" src="img/ball.png" style="display:none"/>
+		<img id="fire" src="img/fire.png" style="display:none"/>
+		<img id="gold" src="img/star.png" style="display:none"/>
+		<img id="success" src="img/success.png" style="display:none"/>
+</body>

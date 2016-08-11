@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShoppingListActivity" >
+    
+    <RelativeLayout android:id="@+id/slist_actionbar"
+        android:background="@color/actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+        <TextView android:id="@+id/slist_headertext"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        style="@style/ActionBarText"
+	        android:layout_marginLeft="5dp"
+	        android:text="Grocery List"/>
+        <ImageButton android:id="@+id/slist_menu_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:contentDescription="Menu"
+	        android:src="@drawable/homebtn1"/>
+        <ImageButton android:id="@+id/slist_add_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toLeftOf="@+id/slist_menu_btn"
+	        android:contentDescription="Add Item"
+	        android:src="@drawable/addbtn1"/>
+     </RelativeLayout>
+     
+    <RelativeLayout android:id="@+id/slist_subheader"
+        android:background="@color/actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/slist_actionbar">
+        <TextView android:id="@+id/slist_subcol1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        style="@style/ActionBarTextSmall"
+	        android:layout_marginLeft="5dp"
+	        android:text="Item Name"/>
+        <TextView android:id="@+id/slist_subcol2"
+	        style="@style/ActionBarTextSmall"
+	        android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+	        android:text="Quantity to Purchase"/>
+    </RelativeLayout>
+     
+    <ListView
+        android:id="@+id/slist_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/slist_subheader">
+    </ListView>
+     
+</RelativeLayout>

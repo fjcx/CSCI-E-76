@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+
+<body>
+
+
+<span id="alpha">Alpha</span><br/>
+<span id="beta">Beta</span><br/>
+<span id="gamma">Gamma</span>
+<script>
+   if (! window.DeviceOrientationEvent)
+	{
+		alert("This demo is only supported on mobile browsers");
+		throw ("Get a Mobile Browser");
+	}
+
+  // Otherwise, we are here
+
+
+  function orientationHandler (e)
+  {
+	document.getElementById('alpha').innerHTML = e.alpha;
+	document.getElementById('beta').innerHTML = e.beta;
+	document.getElementById('gamma').innerHTML = e.gamma;
+
+  }
+  window.addEventListener ("deviceorientation", orientationHandler, false);
+
+</script>
+</body>
+</html>

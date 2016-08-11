@@ -1,0 +1,142 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML5 Browser detection via Javascript</title>
+<meta name="viewport" content="width=device-width, user-scable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body onLoad="init();">
+	
+<script>
+var context;
+var x=100;
+var y=200;
+var scrwidth = 350;
+var scrheight = 400;
+var dx=5;
+var dy=5;
+var ballrad=10;
+var obst1;
+
+function init()
+{
+
+	window.addEventListener('devicemotion', motionHandler, true);
+	context= mainCanvas.getContext('2d');
+	//Should perhaps init obstacles here
+	obst1 = new obstacle('brown', 50, 90, 30, 40);
+  //setInterval(draw,30);
+}
+
+function obstacle(obsType, obsX, obsY, obsWidth, obsHeight) {
+	this.obsType = obsType;
+	this.obsX = obsX;
+	this.obsY = obsY;
+	this.obsHeight = obsHeight;
+	this.obsWidth = obsWidth;
+}
+
+obstacle.prototype.isHit = function() {
+	// quick check, and return Boolean (true/false)
+	if((newx>(this.obsX-ballrad))&&(newx<(this.obsX+this.obsWidth+ballrad))&&(newy>(this.obsY-ballrad))&&(newy<(this.obsY+this.obsHeight+ballrad)) ){
+		this.obsType = 'red';
+		return true;
+	}else {
+		this.obsType = 'brown';
+		return false;
+	}
+}
+
+obstacle.prototype.isHitX = function(newX) {
+	// quick check, and return Boolean (true/false)
+	if((newX>(this.obsX-ballrad)) && (newX<(this.obsX+this.obsWidth+ballrad))){
+		this.obsType = 'red';
+		return true;
+	}else{
+		this.obsType = 'brown';
+		return false;
+	}
+}
+
+obstacle.prototype.isHitY = function() {
+	// quick check, and return Boolean (true/false)
+	if((y>(this.obsY-ballrad)) && (y<(this.obsY+this.obsHeight+ballrad))){
+		this.obsType = 'red';
+		return true;
+	}else{
+		this.obsType = 'brown';
+		return false;
+	}
+}
+
+function motionHandler(e) {
+	mainCanvas.width=scrwidth;
+	mainCanvas.height=scrheight;
+  	context.clearRect(0,0, scrwidth,scrheight);
+  	context.beginPath();
+  	context.fillStyle="#0000ff";
+ 	// Draws a circle of radius 10 at the coordinates 100,100 on the canvas
+ 	context.arc(x,y,ballrad,0,Math.PI*2,true);
+ 	context.closePath();
+  	context.fill();
+	
+	
+	drawObstacle(obst1);
+
+	if (!e.accelerationIncludingGravity){ return false };
+	var acc = e.accelerationIncludingGravity;
+	dx = -(3*acc.x);
+	dy = (3*acc.y);
+	newx = x + dx;
+	newy = y + dy;
+	
+	var moveX = false;
+	var moveY = false;
+
+  // Boundary Logic
+	if( newx<ballrad || newx>(scrwidth-ballrad)){
+		if((newx>(scrwidth-ballrad) && dx<(0-ballrad))||(newx<ballrad && dx>0)){
+			moveX=true;
+		}
+	}else{
+		moveX=true;
+	}
+
+	if( newy<ballrad || newy>(scrheight-ballrad)){
+		if((newy>(scrheight-ballrad) && dy<(0-ballrad))||(newy<ballrad && dy>0)){
+			moveY=true;
+		}
+	}else{
+		moveY=true;
+	}
+	
+	// Obstacle Logic
+	if(obst1.isHit()){
+		
+	}
+	if(moveX){
+		x=newx;
+	}
+	
+	if(moveY){
+		y=newy;
+	}
+	
+}
+
+function drawObstacle(obstacle) {
+	context.beginPath();
+	context.rect(obstacle.obsX, obstacle.obsY, obstacle.obsWidth, obstacle.obsHeight);
+	context.fillStyle = obstacle.obsType;
+	context.fill();
+	context.lineWidth = 2;
+	context.strokeStyle = 'black';
+	context.stroke();
+}
+
+
+</script>
+  <canvas id="mainCanvas">
+  </canvas>
+</body>

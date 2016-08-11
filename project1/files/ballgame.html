@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+
+<body>
+
+
+<span id="alpha">0.00</span><br/>
+<span id="beta">0.00</span><br/>
+<span id="gamma">0.00</span>
+<br/>
+
+<div id="ball" style="position : absolute; top : 0px; left : 0px; border : 1px solid red; width : 10px; height: 10px; background-color : red;">&nbsp;</div>
+
+<span id="message"></span>
+<script>
+   if (! window.DeviceMotionEvent)
+	{
+		alert("This demo is only supported on mobile browsers");
+		throw ("Get a Mobile Browser");
+	}
+  // Otherwise, we are here
+
+
+  function motionHandler (e)
+  {
+	if (!e.accelerationIncludingGravity) return false;
+	a = e.accelerationIncludingGravity;
+	leftPos =  (document.getElementById('ball').style.left);
+	topPos =  (document.getElementById('ball').style.top);
+
+	if (leftPos && leftPos.indexOf && leftPos.indexOf("px") != -1) {}
+		leftPos = new Number (leftPos.substring(0, leftPos.length -2)) ;
+	if (topPos && topPos.indexOf && topPos.indexOf("px") != -1) {}
+		topPos = new Number (topPos.substring(0, topPos.length -2)) ;
+
+
+
+	
+	leftPos += 2 *a.y;
+        topPos += 2 *a.x;
+
+
+
+	if (topPos < 0 ) topPos = 0;
+	if (leftPos <0) leftPos = 0;
+	if (leftPos > document.width-20) { leftPos = document.width-20 ;}
+	if (topPos > document.height-20) { topPos = document.height-20 ;}
+	document.getElementById('ball').style.left = leftPos + "px";
+	document.getElementById('ball').style.top= topPos + "px";
+	
+	
+
+  }
+  window.addEventListener ("devicemotion", motionHandler, false);
+
+</script>
+</body>
+</html>

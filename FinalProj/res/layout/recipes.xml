@@ -1,0 +1,108 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+ 
+    <TextView android:id="@+id/recipename_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recipe_actionbar"
+        android:text="Recipe Name:"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="7dp"
+        style="@style/BlueHeader"/>
+   	<EditText
+        android:id="@+id/recipename_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Recipe to find"
+        android:singleLine="true"
+        android:layout_below="@+id/recipename_label">
+        <requestFocus/>
+    </EditText>
+    
+   	<TextView android:id="@+id/ingredients_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recipename_text"
+        android:text="Include Ingredients:"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="7dp"
+        style="@style/BlueHeader"/>
+    <EditText
+        android:id="@+id/ingred_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ingredients_label"
+        android:hint="Ingredient 1"
+        android:singleLine="true">
+    </EditText>
+    <EditText
+        android:id="@+id/ingred2_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ingred_text"
+        android:hint="Ingredient 2"
+        android:singleLine="true">
+    </EditText>
+    <EditText
+        android:id="@+id/ingred3_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ingred2_text"
+        android:hint="Ingredient 3"
+        android:singleLine="true">
+    </EditText>
+     	
+  	<TextView android:id="@+id/diet_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ingred3_text"
+        android:text="Diet Restrictions:"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="7dp"
+        style="@style/BlueHeader"/>
+     
+     <CheckBox
+        android:id="@+id/chkGluten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/diet_label"
+        android:text="Gluten-free" />
+     <CheckBox
+        android:id="@+id/chkDairyfree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chkGluten"
+        android:text="Dairy-free" />
+     
+     <Button
+        android:id="@+id/recipe_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chkDairyfree"
+        android:textColor="@color/darktext"
+        
+        android:text="Search ->"/>
+    
+    <RelativeLayout android:id="@+id/recipe_actionbar"
+        android:background="@color/actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+        <TextView android:id="@+id/recipes_headertext"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        style="@style/ActionBarText"
+	        android:layout_marginLeft="5dp"
+	        android:text="Find Recipe"/>
+        <ImageButton android:id="@+id/recipe_menu_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:contentDescription="Menu"
+	        android:src="@drawable/homebtn1"/>
+    </RelativeLayout>
+    
+</RelativeLayout>

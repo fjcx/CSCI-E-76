@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+
+<body bgcolor="yellow" color="white">
+
+
+<span id="alpha">0.00</span><br/>
+<span id="beta">0.00</span><br/>
+<span id="gamma">0.00</span>
+<br/>
+
+<div id="ball" style="position : absolute;  border-radius :10px; top : 0px; left : 0px; border : 1px solid red; width : 20px; height: 20px; background-color : red;">&nbsp;</div>
+
+<span id="message"></span>
+<script>
+   if (! window.DeviceMotionEvent)
+	{
+		alert("This demo is only supported on mobile browsers");
+		throw ("Get a Mobile Browser");
+	}
+  // Otherwise, we are here
+
+window.leftPos = 0;
+window.topPos = 0;
+window.animCount = 0;
+function draw()
+{
+	document.getElementById('ball').style.left = window.leftPos + "px";
+	window.animCount++;
+	document.getElementById('message').innerHTML =(window.animCount);
+
+
+	document.getElementById('ball').style.top= window.topPos + "px";
+	webkitRequestAnimationFrame(draw);
+}
+
+  function motionHandler (e)
+  {
+	if (!e.accelerationIncludingGravity) return false;
+	a = e.accelerationIncludingGravity;
+//	leftPos =  (document.getElementById('ball').style.left);
+//	topPos =  (document.getElementById('ball').style.top);
+
+//	if (leftPos && leftPos.indexOf && leftPos.indexOf("px") != -1) {}
+//		leftPos = new Number (leftPos.substring(0, leftPos.length -2)) ;
+//	if (topPos && topPos.indexOf && topPos.indexOf("px") != -1) {}
+//		topPos = new Number (topPos.substring(0, topPos.length -2)) ;
+
+
+
+	
+        
+    document.getElementById('alpha').innerHTML = a.y;
+     var y = a.y;
+     var x = a.x;
+	window.leftPos += parseInt(1 *y);
+        window.topPos += parseInt(1 *x );
+
+
+
+	if (window.topPos < 0 ) topPos = 0;
+	if (window.leftPos <0) leftPos = 0;
+	if (window.leftPos > document.width-30) { window.leftPos = document.width-30 ;}
+	if (window.topPos > document.height-30) { window.topPos = document.height-30 ;}
+	
+	
+
+  }
+   draw();
+
+  window.addEventListener ("devicemotion", motionHandler, false);
+
+</script>
+</body>
+</html>

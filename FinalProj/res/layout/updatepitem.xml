@@ -1,0 +1,174 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+ 
+    <TextView android:id="@+id/uitemname_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uitem_actionbar"
+        android:text="Pantry Item:"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="7dp"
+        style="@style/BlueHeader"/>
+   	<EditText
+        android:id="@+id/uitemname_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Pantry Item Name"
+        android:singleLine="true"
+        android:layout_below="@+id/uitemname_label">
+        <requestFocus/>
+    </EditText>
+    
+   	<TextView android:id="@+id/ucategory_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uitemname_text"
+        android:text="Category:"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="7dp"
+        style="@style/BlueHeader"/>
+    <EditText
+        android:id="@+id/ucategory_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ucategory_label"
+        android:hint="Category Name"
+        android:singleLine="true">
+    </EditText>
+    
+    <TextView android:id="@+id/ushop_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ucategory_text"
+        android:text="Associated Store:"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="7dp"
+        style="@style/BlueHeader"/>
+    <EditText
+        android:id="@+id/ushop_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ushop_label"
+        android:hint="Store Name"
+        android:singleLine="true">
+    </EditText>
+    
+    <TextView android:id="@+id/uquantity_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ushop_text"
+        android:text="Owned Quantity:"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="7dp"
+        style="@style/BlueHeader"/>
+    <EditText
+        android:id="@+id/uquantity_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uquantity_label"
+        android:inputType="number"
+        android:hint="Owned Quantity"
+        android:singleLine="true">
+    </EditText>
+    <TextView android:id="@+id/uexpiry_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uquantity_text"
+        android:text="Expiry Date:"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="7dp"
+        style="@style/BlueHeader"/>
+    <EditText
+        android:id="@+id/uexpiry_text"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uexpiry_label"
+        android:hint="Expiry Date"
+        android:singleLine="true"
+        android:clickable="false">
+    </EditText>
+    <ImageButton
+        android:id="@+id/uexpiry_calbtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/uexpiry_text"
+        android:layout_toRightOf="@+id/uexpiry_text"
+        android:contentDescription="change date"
+        android:src="@drawable/calendar_view_month">
+    </ImageButton>
+    <ImageButton
+        android:id="@+id/uexpiry_calclearbtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/uexpiry_calbtn"
+        android:layout_toRightOf="@+id/uexpiry_calbtn"
+        android:contentDescription="clear calendar"
+        android:src="@drawable/cross">
+    </ImageButton>
+    <TextView android:id="@+id/uquantitypurch_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uexpiry_text"
+        android:text="Quantity to Purchase:"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="7dp"
+        style="@style/BlueHeader"/>
+    <EditText
+        android:id="@+id/uquantitypurch_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uquantitypurch_label"
+        android:inputType="number"
+        android:hint="Quantity to Purchase"
+        android:singleLine="true">
+    </EditText>
+     <TextView android:id="@+id/uscale_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uquantitypurch_text"
+        android:text="Scale:"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="7dp"
+        style="@style/BlueHeader"/>
+    <EditText
+        android:id="@+id/uscale_text"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uscale_label"
+        android:hint="(e.g. g/ml/kg)"
+        android:singleLine="true">
+    </EditText>
+    <Button
+        android:id="@+id/updateitem_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_alignBottom="@+id/uscale_text"
+        android:textColor="@color/darktext"
+        
+        android:text="Update ->"/>
+    
+    <RelativeLayout android:id="@+id/uitem_actionbar"
+        android:background="@color/actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+        <TextView android:id="@+id/uitem_headertext"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        style="@style/ActionBarText"
+	        android:layout_marginLeft="5dp"
+	        android:text="Update Item"/>
+        <ImageButton android:id="@+id/uitem_menu_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:contentDescription="Menu"
+	        android:src="@drawable/homebtn1"/>
+    </RelativeLayout>
+    
+</RelativeLayout>

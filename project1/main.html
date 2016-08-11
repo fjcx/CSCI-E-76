@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ball Danger</title>
+<link rel="apple-touch-icon" href="star.png"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width, user-scable=no, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="mainstyle.css">
+</head>
+	<body onload="onload();">
+	<script>
+		var btnSnd;
+
+		function newgame(e){
+			playBtnSnd();
+			// artifical timeout so sound can play
+		    window.setTimeout(navigateToPage("game.html"),2000);
+		}
+
+		function scores(e){
+			playBtnSnd();
+		    window.setTimeout(navigateToPage("scores.html"),2000);
+		}
+
+		function settings(e){
+			playBtnSnd();
+		    window.setTimeout(navigateToPage("settings.html"),2000);
+		}
+
+		function help(e){
+			playBtnSnd();
+		    window.setTimeout(navigateToPage("help.html"),2000);
+		}
+
+		function quit(e){
+			playBtnSnd();
+		    navigateToPage("main.html");
+		}
+		
+		function navigateToPage(url){
+			window.location =url;
+		}
+
+		function onload(){
+		    document.getElementById('newGameBtn').addEventListener('touchstart', newgame, false);
+		    document.getElementById('highScoresBtn').addEventListener('touchstart', scores, false);
+			document.getElementById('settingsBtn').addEventListener('touchstart', settings, false);
+			document.getElementById('helpBtn').addEventListener('touchstart', help, false);
+		    document.getElementById('quitBtn').addEventListener('touchstart', quit, false);
+			btnSnd = new Audio("audio/click1.mp3");
+		}
+
+		function playBtnSnd(){
+			btnSnd.pause();
+			btnSnd.currentTime = 0;
+			btnSnd.play();
+		}
+	</script>
+		<h1>Ball Danger</h1>
+		<h2>Main Menu</h2>
+		<ul>
+			<li><button type="button" id='newGameBtn'>New Game</button></li>
+			<li><button type="button" id='highScoresBtn'>High Scores</button></li>
+			<li><button type="button" id='settingsBtn'>Settings</button></li>
+			<li><button type="button" id='helpBtn'>Help</button></li>
+			<li><button type="button" id='quitBtn'>Quit</button></li>
+		</ul>
+	</body>
+</html>
+

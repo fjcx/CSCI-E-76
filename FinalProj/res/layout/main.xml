@@ -1,0 +1,82 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mainback1"
+    tools:context=".MainActivity" >
+    
+    <RelativeLayout 
+        android:id="@+id/btn_array"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_centerHorizontal="true"
+    	android:layout_above="@+id/bottomspacer">
+	    <ImageButton
+	        android:id="@+id/pantry_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentTop="true"
+	        android:contentDescription="@string/pantry_btn_str"
+	        android:src="@drawable/pantry1"/>
+	    
+	    <ImageButton
+	        android:id="@+id/shoplist_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignTop="@+id/pantry_btn"
+	        android:layout_toRightOf="@+id/pantry_btn"
+	        android:layout_marginLeft="10dp"
+	        android:contentDescription="@string/shoplist_btn_str" 
+	        android:src="@drawable/grocerylist1"/>
+	            
+	    <ImageButton
+	        android:id="@+id/recipe_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignRight="@+id/pantry_btn"
+	        android:layout_below="@+id/pantry_btn"
+	        android:layout_marginTop="20dp"
+	        android:contentDescription="@string/recipe_btn_str"
+	        android:src="@drawable/recipe1"/> 
+	
+		<ImageButton
+	        android:id="@+id/shops_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/shoplist_btn"
+	        android:layout_alignTop="@+id/recipe_btn"
+	
+	        android:layout_centerHorizontal="true"
+	        android:contentDescription="@string/shops_btn_str"
+	        android:src="@drawable/shops1" />
+		
+	    <ImageButton
+	        android:id="@+id/calendar_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/recipe_btn"
+	        android:layout_below="@+id/recipe_btn"
+	        android:layout_marginTop="20dp"
+	        android:contentDescription="@string/calendar_btn_str"
+	        android:src="@drawable/mealcalgray"/>
+	
+	    <ImageButton
+	        android:id="@+id/achieve_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/shops_btn"
+	        android:layout_marginTop="20dp"
+			android:layout_alignRight="@+id/shops_btn"
+	        android:contentDescription="@string/achieve_btn_str"
+	        android:src="@drawable/achievegray" />
+    </RelativeLayout>
+    <FrameLayout 
+        android:id="@+id/bottomspacer"
+        android:layout_width="match_parent"
+	    android:layout_height="60dp"
+	    android:layout_alignParentBottom="true">
+        
+    </FrameLayout>
+
+</RelativeLayout>

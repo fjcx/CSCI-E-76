@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+
+<style>
+body, html {
+-webkit-perspective: 800;
+height : 100% 
+}
+</style>
+<body bgcolor="yellow" color="white">
+
+
+<span id="alpha">0.00</span><br/>
+<span id="beta">0.00</span><br/>
+<span id="gamma">0.00</span>
+<br/>
+
+<div id="ball" style="position : absolute;  border-radius :10px; top : 0px; left : 0px; border : 1px solid red; width : 20px; height: 20px; background-color : red;">&nbsp;</div>
+
+<canvas style="-webkit-transform: translate3d(10px,20px,40px);" ontouchstart="alert('x');" id="myCanvas" width="1000" height="400">
+</canvas>
+
+
+
+<span id="message"></span>
+<script>
+   if (! window.DeviceMotionEvent)
+	{
+		alert("This demo is only supported on mobile browsers");
+		throw ("Get a Mobile Browser");
+	}
+  // Otherwise, we are here
+
+window.leftPos = 0;
+window.topPos = 0;
+window.animCount = 0;
+function draw()
+{
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+ctx.fillStyle="#FF0000";
+ctx.clearRect(0,0, c.width, c.height);
+ctx.fillRect(window.leftPos,window.topPos,10,10);
+// c.style.WebkitTransform = "translate3d(10px,10px,10px)";
+
+	window.animCount++;
+	document.getElementById('message').innerHTML =(window.animCount);
+
+
+	webkitRequestAnimationFrame(draw);
+}
+
+  function motionHandler (e)
+  {
+	if (!e.accelerationIncludingGravity) return false;
+	a = e.accelerationIncludingGravity;
+//	leftPos =  (document.getElementById('ball').style.left);
+//	topPos =  (document.getElementById('ball').style.top);
+
+//	if (leftPos && leftPos.indexOf && leftPos.indexOf("px") != -1) {}
+//		leftPos = new Number (leftPos.substring(0, leftPos.length -2)) ;
+//	if (topPos && topPos.indexOf && topPos.indexOf("px") != -1) {}
+//		topPos = new Number (topPos.substring(0, topPos.length -2)) ;
+
+
+
+	
+        
+   // document.getElementById('alpha').innerHTML = a.y;
+     var y = a.y;
+     var x = a.x;
+	window.leftPos += parseInt(10 *y);
+        window.topPos += parseInt(10 *x );
+
+
+
+	if (window.topPos < 0 ) topPos = 0;
+	if (window.leftPos <0) leftPos = 0;
+	if (window.leftPos > document.width-30) { window.leftPos = document.width-30 ;}
+	if (window.topPos > document.height-30) { window.topPos = document.height-30 ;}
+	
+	
+
+  }
+   draw();
+
+  window.addEventListener ("devicemotion", motionHandler, false);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<title>HTML5 Browser detection via Javascript</title>
+</head>
+<body>
+<script>
+
+function feature(Name, Description, Detector)
+{
+
+	this.Name = Name;
+ 	this.Description = Description;
+	this.Detector = Detector;
+
+	this.isPresent = function ()
+	{
+		try {
+
+		return (eval(Detector));
+
+		} catch (e) { return false; }
+	}
+
+
+}
+
+function addFeature (Name, Description, Detector)
+{
+
+   if (!window.features) window.features = new Array();
+
+   f = new feature(Name,Description,Detector);
+
+   window.features[window.features.length] = f;
+
+
+
+  return f;
+}
+
+
+function canvasTest()
+{
+	var c = document.createElement("canvas");
+	return (c && c.getContext('2d'));
+}
+
+f = new feature ("Local Storage", "HTML5 Local Storage APIs", "window.localStorage");
+f = new feature ("Offline Database", "SQL access to dedicated local storage", "window.openDatabase");
+f = new feature ("Touch Events", "Multi-Touch support (W3C recommendation)", "window.TouchEvent");
+f = new feature("Web Sockets" , "Generic network (TCP) connections from Javascript", "window.WebSocket"); 
+f = new feature("Canvas" , "Drawing of arbitrary lines, shapes and other graphics from Javascript", "canvasTest()"); 
+f = new feature("GeoLocation" , "Accessing the location of your computer/device (with your approval) ", "navigator.geolocation"); 
+f = new feature ("Orientation", "Accessing device orientation and detecting movement from Javascript", "window.DeviceOrientationEvent");
+
+if (f.isPresent()) {
+
+    alert(f.Name + ", A feature that enables " + f.Description + " is supported\n");
+
+ } 
+
+else { alert(f.Name + " is not supported");}
+alert(WebSocket);
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FinalProj</string>
+    <string name="menu_settings">Settings</string>
+    <string name="pantry_btn_str">Pantry</string>
+    <string name="recipe_btn_str">Find Recipe</string>
+    <string name="shoplist_btn_str">Shopping List</string>
+    <string name="calendar_btn_str">Meal Calendar</string>
+    <string name="shops_btn_str">Shops Nearby</string>
+    <string name="achieve_btn_str">Achievements</string>
+    <string name="challenge_btn_str">Challenge Mode</string>
+    
+</resources>

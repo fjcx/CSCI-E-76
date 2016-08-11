@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="40dp"
+    android:gravity="center_vertical"
+    >
+
+        <TextView android:id="@+id/slist_item1"
+            android:text="col_1"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+           	android:textSize="16sp"
+            android:width="250dip"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="7dp"
+            android:layout_toLeftOf="@+id/slist_vspac1"
+        />
+        <View android:id="@+id/slist_vspac1"
+		    android:layout_width="1dip"
+		    android:layout_height="fill_parent"
+		    android:background="@color/actionbar"
+		    android:layout_toLeftOf="@+id/slist_item2"
+		/>
+        <TextView android:id="@+id/slist_item2"
+            android:text="col_3"
+            android:layout_height="fill_parent"
+            android:layout_width="80dp"
+           	android:textSize="16sp"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_alignParentRight="true"
+        />
+</RelativeLayout>

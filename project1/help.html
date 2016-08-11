@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ball Danger</title>
+<link rel="apple-touch-icon" href="star.png"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width, user-scable=no, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="mainstyle.css">
+</head>
+	<body onload="onload();">
+	<script>
+		function onload(){
+			document.getElementById('menuBtn').addEventListener('touchstart', menu, false);
+		}
+		
+		function menu(e){
+		    window.location = "../main.html";
+		}
+	</script>
+
+		<h2>Help</h2>
+		<div style="text-align:center">
+			<div style="padding:10px; text-align:left">
+				<p>The goal is to get the ball to the <span style="color:green">green square!</span>.
+					Finishing a level increases your score by 50 points.</br></br> 
+					Try to avoid the <span style="color:red">fires</span>, you will lose a life !!
+					You only get 3 so be careful.</br></br> 
+					Picking up <span style="color:gold">gold stars</span> increases your score by 20, 
+					and slows your ball for a short while.</br> 
+				</p>
+				<p>If you wish to reverse the <strong>x-axis/y-axis</strong>, or lock the view mode 
+					in <strong>portrait/landscape</strong> then please see the <strong>settings</strong> menu.
+				</p>
+			</div>
+			<button type="button" id="menuBtn">Main Menu</button>
+		</div>
+	</body>
+</html>
+

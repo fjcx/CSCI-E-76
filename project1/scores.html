@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML5 Browser detection via Javascript</title>
+</head>
+	<body onload="onload();">
+
+	<meta name="viewport" content="width=device-width, user-scable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<script>
+var firstEl;
+		function mainMenu(e){
+		    window.location = "../main.html";
+		}
+
+		function addScore(e){
+			document.getElementById("firstEl").innerHTML = "230 -" +"Tim First" + "<br>";
+			document.getElementById("firstEl").innerHTML += getFormattedDate()+"<br>";
+			geolocate();
+		}
+
+		function getFormattedDate(){
+			var currentTime = new Date();
+			var dd = currentTime.getDate(); 
+			var mm = currentTime.getMonth() + 1;
+			var yyyy = currentTime.getFullYear(); 
+			if(dd < 10){dd = "0" + dd} 
+			if(mm < 10){mm = "0" + mm} 
+			return mm +"/"+ dd +"/"+ yyyy +" "+currentTime.toTimeString();
+		}
+
+		function onload(){
+		    document.getElementById('mainMenuBtn').addEventListener('touchstart', mainMenu, false);
+		    document.getElementById('addScoreBtn').addEventListener('touchstart', addScore, false);
+		}
+		
+		
+		function geolocate() {
+			firstEl = document.getElementById("firstEl");
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition, showError);
+			} else {
+		    	firstEl.innerHTML="Geolocation is not supported by this browser.";
+			}
+		}
+		
+		function showPosition(position) {
+		  geo_string ="Lat: " + position.coords.latitude + "; Long: " + position.coords.longitude; 
+		  document.getElementById("firstEl").innerHTML += geo_string;
+		}
+		
+		function showError(error) {
+			switch(error.code) {
+				case error.PERMISSION_DENIED:
+				  firstEl.innerHTML="User denied the request for Geolocation."
+				  break;
+				case error.POSITION_UNAVAILABLE:
+				  firstEl.innerHTML="Location information is unavailable."
+				  break;
+				case error.TIMEOUT:
+				  firstEl.innerHTML="The request to get user location timed out."
+				  break;
+				case error.UNKNOWN_ERROR:
+				  firstEl.innerHTML="An unknown error occurred."
+				  break;
+			}
+		}
+	</script>
+
+		<p>High Scores</p>
+		<ol>
+			<li id="firstEl">???, ???, ???</li>
+			<li>???, ???, ???</li>
+			<li>???, ???, ???</li>
+		</ol>
+		<button type="button" id='mainMenuBtn'>MainMenu</button></li>
+		<button type="button" id='addScoreBtn'>AddScore</button></li>
+	</body>
+</html>
+

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ball Danger</title>
+<link rel="apple-touch-icon" href="star.png"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width, user-scable=no, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="mainstyle.css">
+</head>
+	<body onload="onload();">
+	<script>
+		// localStorage and settings
+		var localSortageSupported = false;
+		// default to locked portrait viewport ( because my moto phone only locks in portrait :) )
+		var viewOrient = "portrait"; 
+		// allows reversal of x-axis/y-axis, seems iphone/android reverse axis from testing.
+		// this setting allows the choice. Default to axis for my android device
+		var revXaxis = "false"; 
+ 		var revYaxis = "false"; 
+
+		function initSettings(){
+			localSortageSupported = isLocalStorageSupported();
+			viewOrient = queryLocalStorage("viewOrient",viewOrient);
+			if(viewOrient=="landscape"){
+				document.getElementById("viewOrientChk").checked=true;
+			}else{
+				document.getElementById("viewOrientChk").checked=false;
+			}
+
+			revXaxis = queryLocalStorage("revXaxis",revXaxis);
+			if(revXaxis=="true"){
+				document.getElementById("revXChk").checked=true;
+			}else{
+				document.getElementById("revXChk").checked=false;
+			}
+
+			revYaxis = queryLocalStorage("revYaxis",revYaxis);
+			if(revYaxis=="true"){
+				document.getElementById("revYChk").checked=true;
+			}else{
+				document.getElementById("revYChk").checked=false;
+			}
+		}
+
+
+		function saveChanges(e){
+			// save settings to localStorage and return to main menu
+			if(document.getElementById("viewOrientChk").checked){
+				setLocalStorage("viewOrient", "landscape");
+			}else{
+				setLocalStorage("viewOrient", "portrait");
+			}
+
+			if(document.getElementById("revXChk").checked){
+				setLocalStorage("revXaxis", "true");
+			}else{
+				setLocalStorage("revXaxis", "false");
+			}
+
+			if(document.getElementById("revYChk").checked){
+				setLocalStorage("revYaxis", "true");
+			}else{
+				setLocalStorage("revYaxis", "false");
+			}
+		    window.location = "../main.html";
+		}
+
+		function cancelChanges(e){
+			// don't save, ignore changes and return to main menu
+		    window.location = "../main.html";
+		}
+
+		function onload(){
+			initSettings();
+		    document.getElementById('saveChangesBtn').addEventListener('touchstart', saveChanges, false);
+		    document.getElementById('cancelChangesBtn').addEventListener('touchstart', cancelChanges, false);
+		}
+
+		// see if browser supports localStorage
+		function isLocalStorageSupported() {
+			try {
+				var supported = false;
+				if (window['localStorage'] !== null){
+					supported = true;
+				}
+				return supported;
+			} catch(e) {
+				return false;
+			}
+		}
+
+		// reads setting from 'settings' menu if they exist in localStorage
+		function queryLocalStorage(qryStr,value) {
+			if(localSortageSupported){
+				var storVal = localStorage.getItem(qryStr);
+				// value is undefined if not in localStorage
+				if((typeof(storVal) !== "undefined")&&(storVal!=null)){
+					// return val from localStorage					
+					return storVal;
+				}
+			}
+			// local storage does not contain the value, so return it's current settings
+			return value;
+		} 
+
+		function setLocalStorage(qryStr,value) {
+			if(localSortageSupported){
+				try {
+					localStorage.setItem(qryStr, value);
+				} catch (e) {
+					if (e == QUOTA_EXCEEDED_ERR) {
+						alert('Mem limit: Could not save settings!');
+					}else{
+						alert('Error: Could not save settings!');
+					}
+				}
+			}else{
+				alert('LocalStorage not supported!');
+			}	
+		} 
+	</script>
+
+		<h2>Settings</h2>
+		<div style="text-align:center">
+			<table>
+				<tr><td>Landscape:</td><td><input type="checkbox" id="viewOrientChk"  name="checkgroup"/></td></tr>
+				<tr><td>Reverse X-axis:</td><td><input type="checkbox" id="revXChk"  name="checkgroup"/></td></tr>
+				<tr><td>Reverse Y-axis:</td><td><input type="checkbox" id="revYChk"  name="checkgroup"/></td></tr>
+			</table>
+			<button type="button" id="saveChangesBtn">Save</button>
+			<button type="button" id="cancelChangesBtn">Cancel</button>
+		</div>
+		
+	</body>
+</html>
+
